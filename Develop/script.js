@@ -13,6 +13,7 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // My code is below
 
 var passwordLength = prompt("How many characters would you like the password to include?");
@@ -22,7 +23,9 @@ if (passwordLength < 8 || passwordLength > 128) {
   alert("Your password cannot be less than 8 character or more than 128 characters.");
   passwordLength = prompt("How many characters would you like the password to include?");
 }
-// unsure if this needs an else statement
+else { // unsure if needed
+  confirm(passwordLenth);
+}
 
 var lowercase = confirm("Would you like your password to include lowercase letter?");
 // add if for lowercase=false
@@ -69,3 +72,17 @@ if (lowercase === false && uppercase === false && numeric === false && specialCh
   numeric = confirm("Would you like your password to include numbers?");
   specialCharacters = confirm("Would you like your password to include speical characters");
 }
+
+// create arrays for each combination of password character types
+
+// just lowercase characters
+var type1 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+// just uppercase characters
+var type2 = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+
+// just numeric characters
+var type3 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+// just special characters
+var type4 = [" ", "!", "U+0020", "#", "$", "%", "&", "U+0027", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", ">", "=", "?", "@", "[", "]", "U+005C", "^", "_", "`", "{", "}", "|", "~"]
