@@ -13,8 +13,7 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// My code is below
+// My code is below //////////////////////////////////////////////////////////////////////////////////////////////
 
 var passwordLength = prompt("How many characters would you like the password to include?");
 // need to parseInt prompt value
@@ -65,6 +64,7 @@ else {
 }
 
 // may need final if statement for having all character types false
+// this might need to be a while loop
 if (lowercase === false && uppercase === false && numeric === false && specialCharacters === false) {
   alert("Your password must include at lease one of the following: lowercase letter, uppercase letters, numeric values, or special characters.");
   lowercase = confirm("Would you like your password to include lowercase letters?");
@@ -76,13 +76,26 @@ if (lowercase === false && uppercase === false && numeric === false && specialCh
 // create arrays for each combination of password character types
 
 // just lowercase characters
-var type1 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+var type1 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 // just uppercase characters
-var type2 = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+var type2 = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
 // just numeric characters
-var type3 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+var type3 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-// just special characters
-var type4 = [" ", "!", "U+0020", "#", "$", "%", "&", "U+0027", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", ">", "=", "?", "@", "[", "]", "U+005C", "^", "_", "`", "{", "}", "|", "~"]
+// just special characters, need to make sure that unicode works for ', ", \
+var type4 = [" ", "!", "U+0020", "#", "$", "%", "&", "U+0027", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", ">", "=", "?", "@", "[", "]", "U+005C", "^", "_", "`", "{", "}", "|", "~"];
+
+// create var that will be array of stings for password, will concat later
+var passwordElements = [];
+
+// need to start creating Math(), also make this a fucntion so that it can be called later
+function generatePassword(arr) { // may need to rename funciton, generatePassword is used earlier by base code
+  for (i = 0; i < passwordLength; i++) {
+    var ranNum = Math.floor(Math.random() * this.length); // select random number between 0 and array.length (index)
+    var char = this.ranNum; // pulls index from array
+    //need to figure out how to add values together into a string
+    passwordElements.push(this[i]);
+  }
+}
