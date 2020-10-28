@@ -18,12 +18,10 @@ generateBtn.addEventListener("click", writePassword);
 var passwordLength = prompt("How many characters would you like the password to include?");
 // need to parseInt prompt value
 
-if (passwordLength < 8 || passwordLength > 128) {
+// may need to be a while loop, it did
+while (passwordLength < 8 || passwordLength > 128) {
   alert("Your password cannot be less than 8 character or more than 128 characters.");
   passwordLength = prompt("How many characters would you like the password to include?");
-}
-else { // unsure if needed
-  confirm(passwordLenth);
 }
 
 var lowercase = confirm("Would you like your password to include lowercase letter?");
@@ -65,7 +63,7 @@ else {
 
 // may need final if statement for having all character types false
 // this might need to be a while loop
-if (lowercase === false && uppercase === false && numeric === false && specialCharacters === false) {
+while (lowercase === false && uppercase === false && numeric === false && specialCharacters === false) {
   alert("Your password must include at lease one of the following: lowercase letter, uppercase letters, numeric values, or special characters.");
   lowercase = confirm("Would you like your password to include lowercase letters?");
   uppercase = confirm("Would you like your password to include uppercase letters?");
@@ -74,6 +72,7 @@ if (lowercase === false && uppercase === false && numeric === false && specialCh
 }
 
 // create arrays for each combination of password character types
+// may be able to write a loop to create array based on user input, that way I only have to create 4 arrays and not a bunch, with push?
 
 // just lowercase characters
 var type1 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -91,11 +90,20 @@ var type4 = [" ", "!", "U+0020", "#", "$", "%", "&", "U+0027", "(", ")", "*", "+
 var passwordElements = [];
 
 // need to start creating Math(), also make this a fucntion so that it can be called later
-function generatePassword(arr) { // may need to rename funciton, generatePassword is used earlier by base code
+function generatePassword() { // may need to rename funciton, generatePassword is used earlier by base code
   for (i = 0; i < passwordLength; i++) {
     var ranNum = Math.floor(Math.random() * this.length); // select random number between 0 and array.length (index)
     var char = this.ranNum; // pulls index from array
     //need to figure out how to add values together into a string
-    passwordElements.push(this[i]);
+    passwordElements.push(char);
   }
+
 }
+
+// call function
+ var password = generatePassword(type3);
+
+// use join() function to combine array into single string
+console.log(passwordElements.length); // prints passworLength
+console.log(passwordElements[0]); // prints undefined
+console.log(12); // prints 12, test
