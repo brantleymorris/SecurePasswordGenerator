@@ -18,24 +18,22 @@ generateBtn.addEventListener("click", writePassword);
 var passwordLength = prompt("How many characters would you like the password to include?");
 // need to parseInt prompt value
 
-// may need to be a while loop, it did
+// while loop to insure passwordLength in within parameters
 while (passwordLength < 8 || passwordLength > 128) {
   alert("Your password cannot be less than 8 character or more than 128 characters.");
   passwordLength = prompt("How many characters would you like the password to include?");
 }
 
 var lowercase = confirm("Would you like your password to include lowercase letter?");
-// add if for lowercase=false
   if (lowercase === true) {
     alert("Your password can include lowercase letter.");
   }
-  else  { // unsure why this is error-> else doesn't need selector
+  else  {
     alert("Your password will not include lowercase letters");
   }
   
 
 var uppercase = confirm("Would you like your password to include uppercase letters?");
-// add if for uppercase=false
 if (uppercase === true) {
   alert("Your password can include uppercase letters.");
 }
@@ -44,7 +42,6 @@ else {
 }
 
 var numeric = confirm("Would you like your password to include numbers?");
-// add if for numberic=false
 if (numeric === true) {
   alert("Your password can include numeric values.");
 }
@@ -53,7 +50,6 @@ else {
 }
 
 var specialCharacters = confirm("Would you like your password to include speical characters");
-// add if for specialCharacters=false
 if (specialCharacters === true) {
   alert("Your password can include special characters.");
 }
@@ -61,7 +57,7 @@ else {
   alert("Your password will not include special characters.");
 }
 
-// this needed to be a while loop
+// while loop to insure that at least one character type is selected
 while (lowercase === false && uppercase === false && numeric === false && specialCharacters === false) {
   alert("Your password must include at lease one of the following: lowercase letter, uppercase letters, numeric values, or special characters.");
   lowercase = confirm("Would you like your password to include lowercase letters?");
@@ -71,7 +67,7 @@ while (lowercase === false && uppercase === false && numeric === false && specia
 }
 
 // create arrays for each combination of password character types
-// may be able to write a loop to create array based on user input, that way I only have to create 4 arrays and not a bunch, with push?
+// may be able to write a loop to create array based on user input, that way I only have to create 4 arrays and not a bunch, with push or concat
 
 // just lowercase characters
 var type1 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -82,29 +78,23 @@ var type2 = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N
 // just numeric characters
 var type3 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-// just special characters, need to make sure that unicode works for ', ", \, it doesn't
-var type4 = [" ", "!", "U+0020", "#", "$", "%", "&", "U+0027", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", ">", "=", "?", "@", "[", "]", "U+005C", "^", "_", "`", "{", "}", "|", "~"];
+// just special characters
+var type4 = [" ", "!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", ">", "=", "?", "@", "[", "]", "^", "_", "`", "{", "}", "|", "~"];
 
-// create var that will be array of stings for password, will concat later
-var passwordElements = []; // all index are printing as undefined, must not be pulling or pushing index correctly
+// create var that will be array of stings for password
+var passwordElements = [];
 
-// need to start creating Math(), also make this a fucntion so that it can be called later
-function generatePassword(array) { // may need to rename funciton, generatePassword is used earlier by base code, change array to something else
+// function generates password based off of passed in array = x
+function generatePassword(x) { // may need to rename funciton, generatePassword is used earlier by base code
   for (i = 0; i < passwordLength; i++) {
-    var ranNum = Math.floor(Math.random() * array.length); // select random number between 0 and array.length (index), this is not pulling length right
-    console.log(ranNum); // to check what number is, always 0?
-    var char = array[ranNum]; // pulls index from array
-    //need to figure out how to add values together into a string
-    console.log(char); // to see what char is assigned
+    var ranNum = Math.floor(Math.random() * x.length); // select random number between 0 and x.length (index)
+    var char = x[ranNum]; // pulls index from array
     passwordElements.push(char);
-  }
-console.log(passwordElements.join("")); // should combine index into string
-}
+  };
+console.log(passwordElements.join("")); // combine array into single string, and print
+};
 
-// call function, will need to 
- var password = generatePassword(type3);
+// call function, need to figure out how to call, returns undefined
+var passwordHope= generatePassword(type3);
 
-console.log(passwordElements.length); // prints passworLength
-console.log(passwordElements); // prints undefined
-console.log(12); // prints 12, test
-console.log(type4[2]);
+ console.log(passwordHope);
