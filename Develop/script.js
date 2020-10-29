@@ -2,7 +2,12 @@
 function generatePassword() {
 
 var passwordLength = prompt("How many characters would you like the password to include?");
-// need to parseInt prompt value
+
+// while loop to insure passwordLength is an integer
+while (isInteger(passwordLength)===false){
+  alert("Please enter the length you would like your password to be as a number.")
+  passwordLength = prompt("How many characters would you like the password to include?");
+}
 
 // while loop to insure passwordLength in within parameters
 while (passwordLength < 8 || passwordLength > 128) {
