@@ -1,18 +1,3 @@
-/* Assignment Code, delete later
-var generateBtn = document.querySelector("#generate");
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword); */
-
 // My code is below //////////////////////////////////////////////////////////////////////////////////////////////
 function generatePassword() {
 
@@ -33,7 +18,7 @@ var lowercase = confirm("Would you like your password to include lowercase lette
     alert("Your password will not include lowercase letters");
   }
   
-// could create objects, for each and then a method to run confirm 
+// user selects character types to be included
 var uppercase = confirm("Would you like your password to include uppercase letters?");
 if (uppercase === true) {
   alert("Your password can include uppercase letters.");
@@ -67,26 +52,19 @@ while (lowercase === false && uppercase === false && numeric === false && specia
   specialCharacters = confirm("Would you like your password to include speical characters");
 }
 
-// create arrays for each combination of password character types
-// may be able to write a loop to create array based on user input, that way I only have to create 4 arrays and not a bunch, with push or concat
-
-// just lowercase characters
+// character type base arrays, will push based on user input
 var type1 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-// just uppercase characters
 var type2 = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
-// just numeric characters
 var type3 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-// just special characters
 var type4 = [" ", "!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", ">", "=", "?", "@", "[", "]", "^", "_", "`", "{", "}", "|", "~"];
 
-// array to be called by generatePassword fucntion, will have charaters added using logic and type arrays
+// array will be build based on user input
 var characters = [];
 
-
-// need logic to push/concat type arrays into characters array, add numeric and specialCharacters
+// logic to create character array from user input
 if (lowercase === true) {
   for (let i=0; i < type1.length; i++) {
     characters.push(type1[i]);
@@ -115,21 +93,16 @@ if (specialCharacters === true) {
 // create var that will be array of stings for password
 var passwordElements = [];
 
-// function generates password based off of passed in array = x
-//function generatePassword(x) {  may need to rename funciton, generatePassword is used earlier by base code
+
+// generates password
   for (i = 0; i < passwordLength; i++) {
-    var ranNum = Math.floor(Math.random() * characters.length); // select random number between 0 and x.length (index)
+    var ranNum = Math.floor(Math.random() * characters.length); // select random number between 0 and characters.length
     var char = characters[ranNum]; // pulls index from array
     passwordElements.push(char);
   };
 console.log(passwordElements.join("")); // combine array into single string and print, need to figure out how to pass out
 return passwordElements.join("");
 };
-
-// call function, need to figure out how to call, returns undefined
-// var passwordHope= generatePassword(characters);
-
-//console.log(passwordHope);
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
