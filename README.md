@@ -1,4 +1,5 @@
 This program generates a random password based on user selected criteria.
+
     The user selects which of the following types of charaters can be included in the password. Note: at least one character type must be selected.
 
         * Lowercase letters
